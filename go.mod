@@ -1,4 +1,4 @@
-module github.com/webdaad/DaadamoozZaplog
+module github.com/webdaad/Zaplog
 
 go 1.25.5
 
