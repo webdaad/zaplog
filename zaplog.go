@@ -146,5 +146,8 @@ func (z *zapLogger) Sync() error {
 }
 
 func ErrorGeneral(ctx context.Context, err error, fields ...zap.Field) {
+	if loggerForErrorGeneral == nil {
+		NewZapLogger(Config{Level: "error", Encoding: "console", Output: "stdout"})
+	}
 	loggerForErrorGeneral.Error(ctx, err.Error(), fields...)
 }

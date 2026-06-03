@@ -1,5 +1,6 @@
 module github.com/webdaad/zaplog
 
+
 go 1.25.5
 
 require (
