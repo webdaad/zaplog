@@ -1,4 +1,5 @@
-module github.com/webdaad/Zaplog
+module github.com/webdaad/zaplog
+
 
 go 1.25.5
 
@@ -11,5 +12,5 @@ require (
 	github.com/jonboulle/clockwork v0.5.0 // indirect
 	github.com/lestrrat-go/strftime v1.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	go.uber.org/multierr v1.10.0 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
 )
