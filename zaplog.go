@@ -17,10 +17,11 @@ const TraceIDKey contextKey = "trace_id"
 
 // Config تنظیمات اولیه لاگر را نگه می‌دارد
 type Config struct {
-	Level    string // "debug", "info", "warn", "error"
-	Encoding string // "json" یا "console"
-	Output   string // "stdout" یا "file"
-	FilePath string // مسیر و نام پایه فایل (مثلا: "logs/app")
+	Level        string // "debug", "info", "warn", "error"
+	Encoding     string // "json" یا "console"
+	Output       string // "stdout" یا "file"
+	FilePath     string // مسیر و نام پایه فایل (مثلا: "logs/app")
+	LinkFile     bool   // اگر true باشد، یک symlink به آخرین فایل لاگ ایجاد می‌شود (app.log)
 }
 
 // Logger اینترفیسی که تمام سرویس‌ها و هندلرهای شما به آن وابسته‌اند
@@ -63,22 +64,15 @@ func NewZapLogger(cfg Config) (Logger, error) {
 	// 3. تعیین خروجی (فایل هوشمند یا کنسول)
 	var writeSyncer zapcore.WriteSyncer
 	if cfg.Output == "file" {
-		rotator, err := rotatelogs.New(
-			// نام‌گذاری روزانه: یک فایل به ازای هر روز
-			cfg.FilePath+"-%Y-%m-%d.log",
-
-			// ایجاد یک فایل میانبر همیشه آپدیت به نام اصلی
-			rotatelogs.WithLinkName(cfg.FilePath+".log"),
-
-			// نگهداری فایل‌ها تا حداکثر 30 روز
-			rotatelogs.WithMaxAge(30*24*time.Hour),
-
-			// چرخش روزانه در ابتدای هر شبانه‌روز
-			rotatelogs.WithRotationTime(24*time.Hour),
-
-			// ایجاد فایل جدید به محض رسیدن به حجم 50 مگابایت
-			rotatelogs.WithRotationSize(50*1024*1024),
-		)
+		opts := []rotatelogs.Option{
+			rotatelogs.WithMaxAge(30 * 24 * time.Hour),
+			rotatelogs.WithRotationTime(24 * time.Hour),
+			rotatelogs.WithRotationSize(50 * 1024 * 1024),
+		}
+		if cfg.LinkFile {
+			opts = append(opts, rotatelogs.WithLinkName(cfg.FilePath+".log"))
+		}
+		rotator, err := rotatelogs.New(cfg.FilePath+"-%Y-%m-%d.log", opts...)
 		if err != nil {
 			return nil, err
 		}
