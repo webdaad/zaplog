@@ -1,0 +1,2078 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>گزارش جامع سرمایه‌گذاری پروژه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0F1826;
+      --ink-2:#1B2C45;
+      --paper:#F8F4EA;
+      --paper-2:#EFE7D3;
+      --card:#FFFDF8;
+      --gold:#B9863A;
+      --gold-light:#D9AE68;
+      --forest:#1E4A3B;
+      --forest-light:#2F6B54;
+      --burgundy:#7A3030;
+      --rule:#DED4B8;
+      --ink-soft:#55617A;
+      --ink-faint:#8B93A6;
+      --radius:8px;
+      --shadow: 0 12px 30px -14px rgba(15,24,38,0.28);
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--paper);
+      color:var(--ink);
+      font-family:'Vazirmatn', sans-serif;
+      font-weight:400;
+      line-height:1.85;
+      font-size:16px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .display{
+      font-family:'Markazi Text', 'Vazirmatn', serif;
+      font-weight:700;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 32px;
+    }
+    section{
+      padding:76px 0;
+      position:relative;
+    }
+    .rule{
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--rule) 12%, var(--rule) 88%, transparent);
+    }
+    .eyebrow{
+      font-size:13px;
+      letter-spacing:0.12em;
+      color:var(--gold);
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .mark{
+      display:inline-flex;
+      align-items:flex-end;
+      gap:3px;
+      height:14px;
+    }
+    .mark span{
+      width:3px;
+      background:var(--gold);
+      display:block;
+      border-radius:1px;
+    }
+    .mark span:nth-child(1){height:6px;}
+    .mark span:nth-child(2){height:10px;}
+    .mark span:nth-child(3){height:10px;}
+    .mark span:nth-child(4){height:6px;}
+
+    h2{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:38px;
+      color:var(--ink);
+      margin-bottom:14px;
+      letter-spacing:0.01em;
+    }
+    .lede{
+      color:var(--ink-soft);
+      font-size:17px;
+      max-width:640px;
+      margin-bottom:44px;
+    }
+
+    /* HERO */
+    .hero{
+      background:
+        radial-gradient(ellipse 900px 500px at 20% -10%, rgba(185,134,58,0.18), transparent 60%),
+        linear-gradient(175deg, var(--ink) 0%, var(--ink-2) 65%, #16233A 100%);
+      color:#F3EFE3;
+      padding:88px 0 96px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:repeating-linear-gradient(0deg, rgba(217,174,104,0.05) 0px, rgba(217,174,104,0.05) 1px, transparent 1px, transparent 64px);
+      pointer-events:none;
+    }
+    .hero .wrap{position:relative; z-index:1;}
+    .hero .mark span{background:var(--gold-light);}
+    .hero .eyebrow{color:var(--gold-light);}
+    .hero h1{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:56px;
+      line-height:1.28;
+      color:#FBF8F0;
+      max-width:720px;
+      animation:riseIn 0.9s ease-out both;
+    }
+    .hero .sub{
+      margin-top:18px;
+      font-size:18px;
+      color:#C8CEDD;
+      max-width:560px;
+      animation:riseIn 0.9s ease-out 0.12s both;
+    }
+    @keyframes riseIn{
+      from{opacity:0; transform:translateY(14px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero h1, .hero .sub, .kpi{animation:none !important;}
+    }
+
+    .kpi-row{
+      margin-top:56px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1px;
+      background:rgba(217,174,104,0.22);
+      border:1px solid rgba(217,174,104,0.22);
+      border-radius:var(--radius);
+      overflow:hidden;
+      animation:riseIn 0.9s ease-out 0.24s both;
+    }
+    .kpi{
+      background:rgba(15,24,38,0.72);
+      padding:28px 22px;
+      text-align:center;
+    }
+    .kpi .num{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:34px;
+      color:var(--gold-light);
+      display:block;
+      line-height:1.2;
+    }
+    .kpi .num small{
+      font-family:'Vazirmatn', sans-serif;
+      font-size:15px;
+      font-weight:500;
+      color:#C8CEDD;
+      margin-right:4px;
+    }
+    .kpi .lbl{
+      margin-top:8px;
+      font-size:13.5px;
+      color:#9AA4BC;
+      letter-spacing:0.02em;
+    }
+    .hero-foot{
+      margin-top:28px;
+      font-size:13px;
+      color:#7C879E;
+      display:flex;
+      justify-content:space-between;
+      animation:riseIn 0.9s ease-out 0.3s both;
+    }
+
+    /* PILLARS */
+    .pillar-note{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      padding:24px 26px;
+      color:var(--ink-soft);
+      font-size:15.5px;
+      margin-bottom:52px;
+    }
+    .pillar-note b{color:var(--ink); font-weight:700;}
+
+    .temple{
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .capstone{
+      background:linear-gradient(90deg, var(--forest), var(--forest-light));
+      color:#F3EFE3;
+      text-align:center;
+      padding:18px 20px;
+      border-radius:6px 6px 0 0;
+      font-weight:700;
+      font-size:16px;
+      letter-spacing:0.02em;
+    }
+    .pillars-row{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:2px;
+      background:var(--rule);
+    }
+    .pillar{
+      background:var(--ink);
+      color:#F3EFE3;
+      height:196px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:center;
+      padding:24px 12px 20px;
+      text-align:center;
+      position:relative;
+    }
+    .pillar::before{
+      content:"";
+      position:absolute;
+      top:0; right:0; left:0;
+      height:3px;
+      background:var(--gold);
+    }
+    .pillar .pct{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:40px;
+      color:var(--gold-light);
+      line-height:1;
+    }
+    .pillar .name{
+      margin-top:10px;
+      font-size:14.5px;
+      color:#D6DAE6;
+      font-weight:500;
+    }
+    .pillar .desc{
+      margin-top:4px;
+      font-size:12px;
+      color:#8B93A6;
+    }
+    .ground{
+      height:8px;
+      background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      border-radius:0 0 6px 6px;
+    }
+
+    /* TABLES */
+    .card{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      break-inside:avoid;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:15px;
+    }
+    thead th{
+      background:var(--ink);
+      color:#EFE7D3;
+      text-align:right;
+      font-weight:600;
+      padding:16px 20px;
+      font-size:13.5px;
+      letter-spacing:0.02em;
+    }
+    thead th.num-col, tbody td.num-col{text-align:left;}
+    tbody td{
+      padding:15px 20px;
+      border-bottom:1px solid var(--rule);
+      color:var(--ink);
+    }
+    tbody tr:last-child td{border-bottom:none;}
+    tbody tr:nth-child(even){background:rgba(185,134,58,0.045);}
+    td.amount, th.amount-h{
+      font-weight:600;
+      text-align:left;
+      font-variant-numeric:tabular-nums;
+      color:var(--ink);
+    }
+    tr.total td{
+      background:var(--ink) !important;
+      color:#F3EFE3;
+      font-weight:700;
+      font-size:16px;
+      padding:18px 20px;
+    }
+    tr.total td.amount{color:var(--gold-light);}
+
+    .sec-label{
+      display:inline-block;
+      font-size:12.5px;
+      font-weight:700;
+      letter-spacing:0.04em;
+      color:var(--forest);
+      background:rgba(30,74,59,0.09);
+      padding:5px 12px;
+      border-radius:20px;
+      margin-bottom:14px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:28px;
+      align-items:start;
+    }
+    .quote{
+      background:var(--paper-2);
+      border-right:3px solid var(--gold);
+      border-radius:0 6px 6px 0;
+      padding:20px 22px;
+      font-size:14.5px;
+      color:var(--ink-soft);
+      line-height:2;
+    }
+    .stat-mini{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      padding:26px 24px;
+      text-align:center;
+    }
+    .stat-mini .amount-big{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:32px;
+      color:var(--burgundy);
+    }
+    .stat-mini .amount-big.pos{color:var(--forest);}
+    .stat-mini .cap{
+      margin-top:8px;
+      font-size:13.5px;
+      color:var(--ink-faint);
+    }
+
+    /* FINAL SUMMARY */
+    .final{
+      background:linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    }
+    .bar-wrap{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:34px 30px;
+      margin-bottom:36px;
+    }
+    .bar-labels{
+      display:flex;
+      justify-content:space-between;
+      font-size:13.5px;
+      color:var(--ink-soft);
+      margin-bottom:12px;
+    }
+    .bar-labels b{color:var(--ink); font-size:15px;}
+    .bar{
+      height:46px;
+      border-radius:8px;
+      overflow:hidden;
+      display:flex;
+      border:1px solid var(--rule);
+    }
+    .seg{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:13.5px;
+      font-weight:600;
+    }
+    .seg.exp{
+      width:83.1%;
+      background:linear-gradient(90deg, var(--burgundy), #8C3B3B);
+    }
+    .seg.dep{
+      width:8.75%;
+      background:linear-gradient(90deg, #6B5A2E, var(--gold));
+      font-size:11.5px;
+    }
+    .seg.rem{
+      width:8.15%;
+      background:linear-gradient(90deg, var(--forest-light), var(--forest));
+      font-size:11.5px;
+    }
+    .bar-legend{
+      display:flex;
+      gap:26px;
+      margin-top:16px;
+      font-size:13px;
+      color:var(--ink-soft);
+    }
+    .bar-legend span{display:inline-flex; align-items:center; gap:7px;}
+    .dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+    .dot.exp{background:var(--burgundy);}
+    .dot.dep{background:var(--gold);}
+    .dot.rem{background:var(--forest);}
+
+    .summary-note{
+      background:var(--ink);
+      color:#E7E1D0;
+      border-radius:var(--radius);
+      padding:30px 30px;
+      font-size:15.5px;
+      line-height:2;
+    }
+    .summary-note b{color:var(--gold-light); font-weight:700;}
+
+    /* FOOTER */
+    footer{
+      padding:44px 0 60px;
+      text-align:center;
+    }
+    footer .mark{margin-bottom:14px; justify-content:center;}
+    footer p{
+      font-size:12.5px;
+      color:var(--ink-faint);
+      max-width:520px;
+      margin:6px auto 0;
+    }
+
+    /* ========== PLATFORM & TECH ========== */
+    .platform{
+      background:
+        radial-gradient(ellipse 700px 400px at 85% 0%, rgba(30,74,59,0.10), transparent 55%),
+        radial-gradient(ellipse 600px 380px at 5% 100%, rgba(185,134,58,0.12), transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    }
+    .platform-hero{
+      background:var(--ink);
+      color:#F3EFE3;
+      border-radius:var(--radius);
+      padding:38px 34px 34px;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:44px;
+      box-shadow:var(--shadow);
+    }
+    .platform-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 92% 18%, rgba(217,174,104,0.16), transparent 42%),
+        repeating-linear-gradient(90deg, rgba(217,174,104,0.04) 0px, rgba(217,174,104,0.04) 1px, transparent 1px, transparent 48px);
+      pointer-events:none;
+    }
+    .platform-hero .inner{position:relative; z-index:1;}
+    .platform-hero h3{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:34px;
+      color:#FBF8F0;
+      margin-bottom:10px;
+      line-height:1.35;
+    }
+    .platform-hero .tagline{
+      color:#B8C0D4;
+      font-size:16px;
+      max-width:620px;
+      margin-bottom:30px;
+    }
+    .dev-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1px;
+      background:rgba(217,174,104,0.20);
+      border:1px solid rgba(217,174,104,0.22);
+      border-radius:6px;
+      overflow:hidden;
+    }
+    .dev-stat{
+      background:rgba(15,24,38,0.55);
+      padding:22px 16px;
+      text-align:center;
+    }
+    .dev-stat .val{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:28px;
+      color:var(--gold-light);
+      line-height:1.2;
+      display:block;
+    }
+    .dev-stat .cap{
+      margin-top:6px;
+      font-size:12.5px;
+      color:#9AA4BC;
+    }
+
+    .feat-section{margin-bottom:48px;}
+    .feat-section:last-child{margin-bottom:0;}
+    .feat-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:22px;
+      flex-wrap:wrap;
+    }
+    .feat-head h3{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:26px;
+      color:var(--ink);
+    }
+    .feat-head .hint{
+      font-size:13.5px;
+      color:var(--ink-faint);
+    }
+    .feat-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:20px;
+      align-items:start;
+    }
+    .feat-block{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .feat-block.wide{grid-column:1 / -1;}
+    .feat-block:hover{box-shadow:0 16px 34px -16px rgba(15,24,38,0.32); transform:translateY(-2px);}
+    .feat-block-head{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      padding:22px 24px 20px;
+      background:linear-gradient(90deg, var(--ink), var(--ink-2));
+      color:#EFE7D3;
+    }
+    .feat-block-head .num{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:32px;
+      color:var(--gold-light);
+      line-height:1;
+      min-width:36px;
+      flex-shrink:0;
+    }
+    .feat-block-head h4{
+      font-size:17px;
+      font-weight:700;
+      margin-bottom:7px;
+      color:#FBF8F0;
+    }
+    .feat-intro{
+      font-size:13.5px;
+      color:#B8C0D4;
+      line-height:1.8;
+      max-width:760px;
+    }
+    .feat-block-body{padding:4px 0 12px;}
+    .feat-list-cols{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+    }
+    .feat-list-cols .feat-list{padding:6px 0;}
+    .feat-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .feat-row .feat-block{height:100%;}
+    .feat-subgrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      padding:18px 20px 20px;
+    }
+    .feat-subcard{
+      background:var(--paper);
+      border:1px solid var(--rule);
+      border-radius:6px;
+      overflow:hidden;
+    }
+    .feat-subcard-head{
+      padding:12px 16px;
+      font-size:13.5px;
+      font-weight:700;
+      color:var(--forest);
+      background:rgba(30,74,59,0.08);
+      border-bottom:1px solid var(--rule);
+    }
+    .feat-subcard .feat-list{padding:4px 0 8px;}
+    .feat-subcard .feat-list li{
+      font-size:14px;
+      padding:9px 16px 9px 14px;
+    }
+    .feat-callout{
+      background:var(--paper-2);
+      border-right:3px solid var(--forest);
+      border-radius:0 6px 6px 0;
+      padding:16px 20px;
+      margin:16px 20px 0;
+      font-size:14px;
+      color:var(--ink-soft);
+      line-height:1.9;
+    }
+    .feat-callout b{color:var(--ink); font-weight:700;}
+    .feat-group-box{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .feat-group-title{
+      background:linear-gradient(90deg, var(--ink), var(--ink-2));
+      color:#EFE7D3;
+      padding:14px 20px;
+      font-size:15px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .feat-group-title .num{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:20px;
+      color:var(--gold-light);
+      min-width:24px;
+    }
+    .feat-list{
+      list-style:none;
+      padding:6px 0 10px;
+    }
+    .feat-list li{
+      position:relative;
+      padding:10px 20px 10px 16px;
+      font-size:14.5px;
+      color:var(--ink-soft);
+      line-height:1.7;
+      border-bottom:1px solid rgba(222,212,184,0.55);
+    }
+    .feat-list li:last-child{border-bottom:none;}
+    .feat-list li::before{
+      content:"";
+      position:absolute;
+      right:0; top:50%;
+      transform:translateY(-50%);
+      width:3px;
+      height:14px;
+      background:var(--gold);
+      border-radius:1px;
+    }
+    .feat-list li b{
+      color:var(--ink);
+      font-weight:600;
+    }
+    .feat-callout b{color:var(--ink); font-weight:700;}
+    .feat-sub{
+      font-size:13px;
+      font-weight:700;
+      color:var(--forest);
+      padding:12px 20px 4px;
+      letter-spacing:0.01em;
+    }
+
+    .tech-groups{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+    }
+    .tech-group{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .tech-group-head{
+      background:linear-gradient(90deg, var(--ink), var(--ink-2));
+      color:#EFE7D3;
+      padding:14px 18px;
+      font-size:14px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .tech-group-head .dot-g{
+      width:8px; height:8px;
+      border-radius:50%;
+      background:var(--gold-light);
+      flex-shrink:0;
+    }
+    .tech-tags{
+      padding:16px 18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tech-tag{
+      font-size:12.5px;
+      font-weight:600;
+      padding:6px 12px;
+      border-radius:20px;
+      border:1px solid var(--rule);
+      background:var(--paper);
+      color:var(--ink-2);
+      white-space:nowrap;
+    }
+    .tech-tag.primary{
+      background:rgba(30,74,59,0.10);
+      border-color:rgba(30,74,59,0.22);
+      color:var(--forest);
+    }
+    .tech-tag.accent{
+      background:rgba(185,134,58,0.12);
+      border-color:rgba(185,134,58,0.28);
+      color:#8A5E1E;
+    }
+
+    .arch-stack{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      padding:28px 26px;
+      box-shadow:var(--shadow);
+    }
+    .arch-layers{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .arch-layer{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-radius:6px;
+      border:1px solid var(--rule);
+      background:var(--paper);
+    }
+    .arch-layer .layer-num{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:22px;
+      color:var(--gold);
+      min-width:32px;
+      text-align:center;
+    }
+    .arch-layer .layer-body{flex:1;}
+    .arch-layer .layer-title{
+      font-size:14.5px;
+      font-weight:700;
+      color:var(--ink);
+      margin-bottom:3px;
+    }
+    .arch-layer .layer-desc{
+      font-size:12.5px;
+      color:var(--ink-soft);
+    }
+    .arch-layer.l-client{border-right:3px solid var(--gold);}
+    .arch-layer.l-api{border-right:3px solid var(--forest);}
+    .arch-layer.l-data{border-right:3px solid var(--burgundy);}
+    .arch-layer.l-ops{border-right:3px solid var(--ink-faint);}
+
+    .platform-note{
+      margin-top:36px;
+      background:linear-gradient(90deg, var(--forest), var(--forest-light));
+      color:#F3EFE3;
+      border-radius:var(--radius);
+      padding:24px 28px;
+      font-size:15px;
+      line-height:2;
+    }
+    .platform-note b{color:var(--gold-light); font-weight:700;}
+
+    /* ========== CONTENT ========== */
+    .content-section{
+      background:linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    }
+    .exam-scope{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .scope-card{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .scope-card-head{
+      padding:14px 20px;
+      font-size:14px;
+      font-weight:700;
+      color:#EFE7D3;
+    }
+    .scope-card-head.target{
+      background:linear-gradient(90deg, var(--ink), var(--ink-2));
+    }
+    .scope-card-head.priority{
+      background:linear-gradient(90deg, var(--forest), var(--forest-light));
+    }
+    .scope-card-body{padding:18px 20px 20px;}
+    .scope-card-body p{
+      font-size:14px;
+      color:var(--ink-soft);
+      line-height:1.85;
+      margin-bottom:14px;
+    }
+    .exam-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .exam-tag{
+      font-size:13px;
+      font-weight:600;
+      padding:7px 14px;
+      border-radius:20px;
+      border:1px solid var(--rule);
+      background:var(--paper);
+      color:var(--ink-2);
+    }
+    .exam-tag.on{
+      background:rgba(30,74,59,0.10);
+      border-color:rgba(30,74,59,0.25);
+      color:var(--forest);
+    }
+    .exam-tag.off{
+      background:rgba(122,48,48,0.06);
+      border-color:rgba(122,48,48,0.18);
+      color:var(--ink-faint);
+    }
+    .scope-range{
+      margin-top:14px;
+      font-size:13px;
+      color:var(--ink-soft);
+      padding:10px 14px;
+      background:var(--paper-2);
+      border-radius:6px;
+    }
+    .scope-range b{color:var(--ink); font-weight:700;}
+    .content-status{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .content-stat{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      padding:24px 22px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .content-stat .val{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:36px;
+      color:var(--gold);
+      line-height:1.2;
+    }
+    .content-stat .val.forest{color:var(--forest);}
+    .content-stat .cap{
+      margin-top:8px;
+      font-size:13.5px;
+      color:var(--ink-soft);
+      line-height:1.75;
+    }
+
+    /* ========== PARTNERSHIP OPTIONS ========== */
+    .option-cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin:8px 0 28px;
+    }
+    .option-card{
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+    .option-card-head{
+      background:linear-gradient(90deg, var(--ink), var(--ink-2));
+      color:#EFE7D3;
+      padding:16px 20px;
+      text-align:center;
+    }
+    .option-card-head .dur{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:22px;
+      color:#FBF8F0;
+      display:block;
+    }
+    .option-card-head .lbl{
+      font-size:12px;
+      color:#B8C0D4;
+      margin-top:3px;
+    }
+    .option-card.featured .option-card-head{
+      background:linear-gradient(90deg, var(--forest), var(--forest-light));
+    }
+    .option-card-body{
+      padding:26px 20px 18px;
+      text-align:center;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .option-card .pct{
+      font-family:'Markazi Text', serif;
+      font-weight:700;
+      font-size:46px;
+      color:var(--gold);
+      line-height:1;
+    }
+    .option-card.featured .pct{color:var(--forest);}
+    .option-card .pct-lbl{
+      margin-top:8px;
+      font-size:13px;
+      color:var(--ink-soft);
+    }
+    .option-card .option-desc{
+      margin-top:12px;
+      font-size:12.5px;
+      color:var(--ink-faint);
+      padding:0 6px;
+      line-height:1.8;
+    }
+    .invite-note{
+      background:var(--ink);
+      color:#E7E1D0;
+      border-radius:var(--radius);
+      padding:28px 30px;
+      font-size:15px;
+      line-height:2;
+      margin-top:8px;
+    }
+    .invite-note b{color:var(--gold-light); font-weight:700;}
+    @media (max-width:720px){
+      .option-cards{grid-template-columns:1fr;}
+    }
+
+    @media (max-width:720px){
+      .wrap{padding:0 20px;}
+      .hero h1{font-size:38px;}
+      .kpi-row{grid-template-columns:1fr;}
+      .pillars-row{grid-template-columns:repeat(2,1fr);}
+      .two-col{grid-template-columns:1fr;}
+      h2{font-size:30px;}
+      thead th, tbody td{padding:12px 14px; font-size:13.5px;}
+      .dev-stats{grid-template-columns:repeat(2,1fr);}
+      .feat-list-cols{grid-template-columns:1fr;}
+      .feat-subgrid{grid-template-columns:1fr;}
+      .feat-row{grid-template-columns:1fr;}
+      .feat-grid{grid-template-columns:1fr;}
+      .feat-block.wide{grid-column:auto;}
+      .exam-scope{grid-template-columns:1fr;}
+      .content-status{grid-template-columns:1fr;}
+      .tech-groups{grid-template-columns:1fr;}
+      .platform-hero h3{font-size:26px;}
+      .feat-group-box{-webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;}
+      .feat-group-title{
+        background:linear-gradient(90deg, var(--ink), var(--ink-2)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .feat-callout{
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+    }
+    
+    /* ========== PRINT STYLES ========== */
+    @page{
+      size:A4 portrait;
+      margin:12mm 10mm 14mm;
+    }
+
+    /* بلوک جدول — فقط برای چاپ */
+    .table-block{
+      margin-bottom:0;
+    }
+
+    .table-wrap{
+      width:100%;
+    }
+
+    @media print{
+      html, body{
+        width:100%;
+        height:auto;
+      }
+
+      body{
+        background:#fff !important;
+        font-size:13.5px;
+        line-height:1.6;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+        color-adjust:exact !important;
+      }
+
+      /* هر جدول (+ عنوانش) از صفحهٔ جدید — مطمئن‌ترین راه در Chrome */
+      .table-block{
+        break-before:page !important;
+        page-break-before:always !important;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+        break-after:avoid !important;
+        page-break-after:avoid !important;
+        padding-top:2mm;
+      }
+
+      /* ترفند WebKit/Chrome: inline-block بهتر از table برای جلوگیری از شکستن */
+      .table-wrap{
+        display:inline-block !important;
+        width:100% !important;
+        vertical-align:top !important;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      .table-block .sec-label,
+      .table-block h2,
+      .table-block .lede{
+        break-after:avoid !important;
+        page-break-after:avoid !important;
+      }
+
+      .table-wrap,
+      .table-wrap .card,
+      .table-wrap table{
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      /* روی tr/tbody اعمال نکن — در Chrome باعث شکستن بدتر می‌شود */
+      table{
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      thead{
+        display:table-header-group !important;
+      }
+
+      tr.total{
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      .wrap > .rule,
+      .rule{
+        display:none !important;
+      }
+      
+      .hero{
+        background:
+          radial-gradient(ellipse 900px 500px at 20% -10%, rgba(185,134,58,0.18), transparent 60%),
+          linear-gradient(175deg, var(--ink) 0%, var(--ink-2) 65%, #16233A 100%) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+        color-adjust:exact !important;
+      }
+      
+      .hero h1, .hero .sub, .hero .eyebrow, .hero .kpi, .hero-foot{
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .capstone{
+        background:linear-gradient(90deg, var(--forest), var(--forest-light)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .pillar{
+        background:var(--ink) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .pillar::before{
+        background:var(--gold) !important;
+      }
+      
+      .pillar .pct{
+        color:var(--gold-light) !important;
+      }
+      
+      .ground{
+        background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      thead th{
+        background:var(--ink) !important;
+        color:#EFE7D3 !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      tr.total td{
+        background:var(--ink) !important;
+        color:#F3EFE3 !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      tr.total td.amount{
+        color:var(--gold-light) !important;
+      }
+      
+      .seg.exp{
+        background:linear-gradient(90deg, var(--burgundy), #8C3B3B) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .seg.dep{
+        background:linear-gradient(90deg, #6B5A2E, var(--gold)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .seg.rem{
+        background:linear-gradient(90deg, var(--forest-light), var(--forest)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .summary-note{
+        background:var(--ink) !important;
+        color:#E7E1D0 !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .summary-note b{
+        color:var(--gold-light) !important;
+      }
+      
+      .card, .hero, .bar-wrap{
+        box-shadow:none !important;
+      }
+      
+      .pillar-note, .quote, .stat-mini, .bar-wrap, .card{
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      
+      .hero .mark span{
+        background:var(--gold-light) !important;
+      }
+      
+      .mark span{
+        background:var(--gold) !important;
+      }
+      
+      .kpi-row{
+        background:rgba(217,174,104,0.22) !important;
+        border-color:rgba(217,174,104,0.22) !important;
+      }
+      
+      .kpi{
+        background:rgba(15,24,38,0.72) !important;
+      }
+      
+      .kpi .num{
+        color:var(--gold-light) !important;
+      }
+      
+      .kpi .lbl{
+        color:#9AA4BC !important;
+      }
+      
+      .hero-foot{
+        color:#7C879E !important;
+      }
+      
+      .rule{
+        background:linear-gradient(90deg, transparent, var(--rule) 12%, var(--rule) 88%, transparent) !important;
+      }
+      
+      .sec-label{
+        color:var(--forest) !important;
+        background:rgba(30,74,59,0.09) !important;
+      }
+      
+      .dot.exp{
+        background:var(--burgundy) !important;
+      }
+      
+      .dot.dep{
+        background:var(--gold) !important;
+      }
+      
+      .dot.rem{
+        background:var(--forest) !important;
+      }
+      
+      .bar-legend{
+        color:var(--ink-soft) !important;
+      }
+      
+      section{
+        padding:20px 0 !important;
+        break-inside:auto;
+        page-break-inside:auto;
+      }
+
+      footer{
+        padding:20px 0 0 !important;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      .summary-note{
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+        margin-top:16px !important;
+        padding:20px 22px !important;
+        font-size:13.5px !important;
+      }
+
+      .table-section{
+        padding:0 !important;
+      }
+
+      .wrap{
+        padding:0 !important;
+        max-width:100% !important;
+      }
+
+      h2{
+        font-size:28px !important;
+        margin-bottom:10px !important;
+      }
+
+      .lede{
+        font-size:14.5px !important;
+        margin-bottom:18px !important;
+        max-width:100% !important;
+      }
+
+      .sec-label{
+        margin-bottom:10px !important;
+      }
+
+      table{
+        font-size:13px !important;
+      }
+
+      thead th{
+        padding:10px 14px !important;
+        font-size:12px !important;
+      }
+
+      tbody td{
+        padding:9px 14px !important;
+      }
+
+      tr.total td{
+        padding:12px 14px !important;
+        font-size:14px !important;
+      }
+
+      .card{
+        border-radius:6px !important;
+        overflow:visible !important;
+        box-shadow:none !important;
+      }
+
+      .two-col{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:14px !important;
+      }
+
+      .two-col .quote{
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+        font-size:12.5px !important;
+        padding:12px 14px !important;
+        line-height:1.75 !important;
+      }
+      
+      .pillars-row{
+        display:grid !important;
+        grid-template-columns:repeat(4, 1fr) !important;
+        gap:2px !important;
+      }
+
+      .platform-hero{
+        background:var(--ink) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .dev-stat{
+        background:rgba(15,24,38,0.55) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .dev-stat .val{color:var(--gold-light) !important;}
+      .tech-group-head{
+        background:linear-gradient(90deg, var(--ink), var(--ink-2)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .platform-note{
+        background:linear-gradient(90deg, var(--forest), var(--forest-light)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .feat-callout{
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .feat-block:hover{transform:none !important; box-shadow:none !important;}
+      .dev-stats{grid-template-columns:repeat(3, 1fr) !important;}
+      .feat-grid{grid-template-columns:repeat(2, 1fr) !important;}
+      .feat-block.wide{grid-column:1 / -1 !important;}
+      .feat-list-cols{grid-template-columns:1fr 1fr !important;}
+      .feat-subgrid{grid-template-columns:1fr 1fr !important;}
+      .feat-row{grid-template-columns:1fr 1fr !important;}
+      .exam-scope{grid-template-columns:1fr 1fr !important;}
+      .content-status{grid-template-columns:1fr 1fr !important;}
+      .scope-card-head.target,
+      .scope-card-head.priority{
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .scope-card-head.target{background:linear-gradient(90deg, var(--ink), var(--ink-2)) !important;}
+      .scope-card-head.priority{background:linear-gradient(90deg, var(--forest), var(--forest-light)) !important;}
+      .feat-block-head{
+        background:linear-gradient(90deg, var(--ink), var(--ink-2)) !important;
+        -webkit-print-color-adjust:exact !important;
+        print-color-adjust:exact !important;
+      }
+      .tech-groups{grid-template-columns:repeat(2, 1fr) !important;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="mark"><span></span><span></span><span></span><span></span></span>
+      گزارش محرمانه سرمایه‌گذاری
+    </div>
+    <h1>پلتفرمی برای آماده‌سازی داوطلبان<br>آزمون‌های حقوقی</h1>
+    <p class="sub">این گزارش، پلتفرمی را معرفی می‌کند که برای آماده‌سازی داوطلبان آزمون‌های حقوقی ساخته شده است. در ادامه، امکانات پلتفرم، وضعیت فعلی محتوا، هزینه‌های اجرا، برآورد بازار و در پایان، جمع سرمایهٔ مورد نیاز و گزینه‌های مشارکت ارائه شده است. در هر بخش، اگر سؤالی دارید یا پیشنهاد خودتان را می‌خواهید مطرح کنید، با کمال میل دربارهٔ آن گفت‌وگو می‌کنیم.</p>
+
+    <div class="hero-foot">
+      <span>تاریخ تهیه گزارش: ۲۸ مرداد ۱۴۰۵</span>
+      <span>واحد کلیه مبالغ: تومان</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PLATFORM & TECH ================= -->
+<section class="platform">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mark"><span></span><span></span><span></span><span></span></span>زیرساخت فنی و محصول</div>
+    <h2>پلتفرم آموزشی — امکانات و فناوری‌ها</h2>
+    <p class="lede">پلتفرم آموزشی تخصصی برای داوطلبان آزمون‌های وکالت، قضاوت و سردفتری — با بیش از ۲.۵ سال توسعه مستمر و بالغ بر ۳٬۲۰۰ ثبت تغییر در کد. اگر بخشی از امکانات یا فناوری‌ها را متفاوت می‌بینید، خوشحال می‌شویم بشنویم.</p>
+
+    <div class="platform-hero">
+      <div class="inner">
+        <h3>یک اکوسیستم کامل، نه فقط یک وب‌سایت</h3>
+        <p class="tagline">سه بخش هم‌پیوند: وب‌اپ کاربران، پنل مدیریت، و موتور پردازش سمت سرور — همه روی زیرساخت آماده بهره‌برداری مستقر شده‌اند.</p>
+        <div class="dev-stats">
+          <div class="dev-stat">
+            <span class="val">+۳٬۲۰۰</span>
+            <span class="cap">ثبت تغییر در کد</span>
+          </div>
+          <div class="dev-stat">
+            <span class="val">۴۱</span>
+            <span class="cap">سرویس مستقل سمت سرور</span>
+          </div>
+          <div class="dev-stat">
+            <span class="val">۵۰+</span>
+            <span class="cap">صفحه و بخش کاربری</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features for volunteers -->
+    <div class="feat-section">
+      <div class="feat-head">
+        <h3>امکانات سایت برای داوطلبان</h3>
+        <span class="hint">منابع و آزمون‌ها رایگان — تمرین کامل، آمار و برنامه مطالعه با اشتراک</span>
+      </div>
+      <div class="feat-grid">
+
+        <article class="feat-block wide">
+          <header class="feat-block-head">
+            <span class="num">۱</span>
+            <div>
+              <h4>تمرین و بانک سوال</h4>
+              <p class="feat-intro">داوطلب از مسیرهای مختلف وارد تمرین می‌شود — هر سوال با پاسخ تشریحی، امکان یادداشت و ابزارهای کمکی برای مدیریت جلسه.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <div class="feat-list-cols">
+              <ul class="feat-list">
+                <li>تمرین آزاد با فیلتر سال آزمون</li>
+                <li>تمرین بر اساس درس</li>
+                <li>تمرین بر اساس مبحث</li>
+                <li>تمرین بر اساس ماده</li>
+                <li>تمرین بر اساس قانون</li>
+                <li>تمرین بر اساس دروس یک آزمون</li>
+                <li>تمرین بر اساس مباحث یک آزمون</li>
+              </ul>
+              <ul class="feat-list">
+                <li>مدیریت زمان تمرین</li>
+                <li>پاسخ تشریحی کامل برای هر سوال</li>
+                <li>یادداشت شخصی روی سوالات</li>
+                <li>نقشه سوالات در جلسه تمرین</li>
+                <li>سوالات مورد علاقه</li>
+                <li>حذف سوالات از چرخه تمرین</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۲</span>
+            <div>
+              <h4>منابع و قوانین</h4>
+              <p class="feat-intro">دسترسی به متن کامل قوانین، آراء وحدت رویه و منابع حقوقی — هر ماده با تعداد تست مشخص. داوطلب هر ماده‌ای را که بخواهد، مستقیم تمرین می‌کند.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li>مشاهده قوانین، آراء وحدت رویه و سایر منابع حقوقی</li>
+              <li>متن کامل هر ماده همراه با تعداد تست</li>
+              <li>امکان پاسخ به تست‌های هر ماده به‌صورت جداگانه</li>
+              <li>ذخیره قوانین و مواد مورد علاقه</li>
+              <li>بارگذاری متن، جزوه، خلاصه و فایل در هر مبحث</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۳</span>
+            <div>
+              <h4>دروس حقوقی</h4>
+              <p class="feat-intro">ساختار درس و مبحث با شفافیت کامل — تعداد تست هر درس و هر مبحث مشخص است و داوطلب مستقیم از همان‌جا وارد تمرین می‌شود.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li>مشاهده فهرست دروس حقوقی</li>
+              <li>نمایش تعداد کل تست هر درس</li>
+              <li>مشاهده مباحث هر درس</li>
+              <li>نمایش تعداد تست هر مبحث</li>
+              <li>امکان تمرین بر اساس درس یا مبحث</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۴</span>
+            <div>
+              <h4>آزمون</h4>
+              <p class="feat-intro">شبیه‌سازی آزمون واقعی یا ساخت آزمون شخصی — داوطلب خودش درس، مبحث، تعداد سوال و مدت زمان را تعیین می‌کند.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li><b>آزمون جامع</b> — شبیه‌سازی آزمون‌های سراسری سال‌های قبل</li>
+              <li><b>آزمون اختصاصی</b> — انتخاب درس و مبحث، تعداد سوالات و مدت آزمون توسط خود داوطلب</li>
+              <li>امکان مرور کامل آزمون پس از پایان</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block wide">
+          <header class="feat-block-head">
+            <span class="num">۵</span>
+            <div>
+              <h4>برنامه مطالعاتی</h4>
+              <p class="feat-intro">برنامه‌ریزی هوشمند بر اساس عملکرد واقعی داوطلب — نه یک تقویم ثابت، بلکه برنامه‌ای که با پیشرفت او تطبیق پیدا می‌کند.</p>
+            </div>
+          </header>
+          <div class="feat-callout">
+            <b>الگوریتم FSRS</b> روش مدرن برنامه‌ریزی مرور است که بر پایه تحقیقات علمی یادگیری طراحی شده. برخلاف روش‌های سنتی مثل «جعبه لایتنر» که فواصل مرور ثابت دارند، FSRS بر اساس اینکه داوطلب هر سوال را چقدر خوب یاد گرفته، زمان مناسب مرور بعدی را محاسبه می‌کند. نتیجه: یادگیری پایدارتر با زمان مطالعه کمتر.
+          </div>
+          <div class="feat-block-body">
+            <div class="feat-list-cols">
+              <ul class="feat-list">
+                <li>برنامه‌ریزی هوشمند با الگوریتم FSRS</li>
+                <li>امکان تعیین نحوه برنامه‌ریزی توسط داوطلب</li>
+                <li>کمک به داوطلب برای تعیین زمان پایان برنامه</li>
+                <li>برنامه روزانه — سوالات پیشنهادی امروز</li>
+              </ul>
+              <ul class="feat-list">
+                <li>امکان چاپ و دانلود برنامه روزانه</li>
+                <li>ویرایش برنامه بدون از بین رفتن پیشرفت‌های قبلی</li>
+                <li>امکان شروع برنامه‌ریزی جدید</li>
+                <li>مرور سوالات غلط و نزده</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat-block wide">
+          <header class="feat-block-head">
+            <span class="num">۶</span>
+            <div>
+              <h4>تحلیل آماری</h4>
+              <p class="feat-intro">آمار تمرین، یادگیری و آزمون کاملاً از هم جدا هستند. در هر بخش، عملکرد درس‌به‌درس و مبحث‌به‌مبحث نمایش داده می‌شود و زمان صرف‌شده برای پاسخ و مرور ثبت می‌گردد.</p>
+            </div>
+          </header>
+          <div class="feat-subgrid">
+            <div class="feat-subcard">
+              <div class="feat-subcard-head">آمار تمرین آزاد</div>
+              <ul class="feat-list">
+                <li>جدا از آمار یادگیری و آزمون</li>
+                <li>آمار دروس به تفکیک</li>
+                <li>آمار مباحث هر درس به تفکیک</li>
+                <li>ثبت زمان پاسخ‌دهی و مرور — درس و مبحث</li>
+              </ul>
+            </div>
+            <div class="feat-subcard">
+              <div class="feat-subcard-head">آمار یادگیری</div>
+              <ul class="feat-list">
+                <li>جدا از آمار تمرین و آزمون</li>
+                <li>آمار دروس و مباحث به تفکیک</li>
+                <li>ثبت زمان صرف‌شده برای هر درس و مبحث</li>
+              </ul>
+            </div>
+            <div class="feat-subcard">
+              <div class="feat-subcard-head">آمار آزمون</div>
+              <ul class="feat-list">
+                <li>جدا از آمار تمرین و یادگیری</li>
+                <li>نمایش نمره خام، منفی و نهایی</li>
+                <li>مقایسه دروس با آزمون قبلی</li>
+                <li>آمار دروس و مباحث به تفکیک</li>
+              </ul>
+            </div>
+            <div class="feat-subcard">
+              <div class="feat-subcard-head">کارنامه تحلیلی آزمون</div>
+              <ul class="feat-list">
+                <li>خلاصه — قوی‌ترین و ضعیف‌ترین درس</li>
+                <li>پیشرفت یا افت نسبت به آزمون قبل</li>
+                <li>تحلیل سرعت، سوالات نزده و نرسیده</li>
+                <li>تحلیل مبحث‌به‌مبحث</li>
+                <li>نوار زمانی پاسخ‌دهی</li>
+                <li>پیشنهاد تمرین هدفمند</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۷</span>
+            <div>
+              <h4>انگیزه و رقابت</h4>
+              <p class="feat-intro">سیستم پاداش برای حفظ انگیزه — مدال‌ها بر اساس قوانین از پیش تعریف‌شده و عملکرد واقعی داوطلب اعطا می‌شوند.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li>امتیاز و سطح پیشرفت</li>
+              <li>اعطای مدال — بر اساس قوانین تعریف‌شده و عملکرد کاربر</li>
+              <li>دیوار افتخارات</li>
+              <li>زنجیره روزانه — ثبت روزهای پیاپی تمرین</li>
+              <li>جدول برترین‌ها</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۸</span>
+            <div>
+              <h4>حساب کاربری و اشتراک</h4>
+              <p class="feat-intro">ثبت‌نام ساده با موبایل، پیشخوان شخصی و خرید اشتراک با کد تخفیف.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li>ثبت‌نام و ورود با شماره موبایل</li>
+              <li>پیشخوان شخصی</li>
+              <li>خرید اشتراک با پلن‌های چندماهه</li>
+              <li>کد تخفیف و کد معرف</li>
+              <li>رسید سفارش و تاریخچه خرید</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block">
+          <header class="feat-block-head">
+            <span class="num">۹</span>
+            <div>
+              <h4>پشتیبانی و محتوا</h4>
+              <p class="feat-intro">پاسخ به سوالات حقوقی تخصصی، پشتیبانی فنی و محتوای آموزشی در بلاگ.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <ul class="feat-list">
+              <li>پرسش و پاسخ حقوقی — سوال از تیم، پاسخ تخصصی</li>
+              <li>تیکت پشتیبانی فنی</li>
+              <li>بلاگ — آزمون‌ها، امکانات، راهنما</li>
+              <li>سوالات متداول</li>
+              <li>جستجوی سریع</li>
+              <li>تور راهنمای کاربران تازه‌وارد</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feat-block wide">
+          <header class="feat-block-head">
+            <span class="num">۱۰</span>
+            <div>
+              <h4>تجربه کاربری</h4>
+              <p class="feat-intro">طراحی واکنش‌گرا برای موبایل و دسکتاپ — قابل نصب روی گوشی، فارسی کامل و بهینه برای جستجو.</p>
+            </div>
+          </header>
+          <div class="feat-block-body">
+            <div class="feat-list-cols">
+              <ul class="feat-list">
+                <li>طراحی واکنش‌گرا — موبایل و دسکتاپ</li>
+                <li>نصب روی گوشی مثل اپلیکیشن</li>
+                <li>حالت شب</li>
+              </ul>
+              <ul class="feat-list">
+                <li>راست‌چین و فارسی کامل</li>
+                <li>تقویم شمسی</li>
+                <li>منوی پایین صفحه در موبایل</li>
+                <li>بهینه‌سازی برای موتورهای جستجو</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Technology stack -->
+    <div class="feat-section">
+      <div class="feat-head">
+        <h3>زیرساخت فنی — به زبان ساده</h3>
+        <span class="hint">انتخاب‌هایی برای سرعت، امنیت و پایداری بلندمدت</span>
+      </div>
+      <div class="tech-groups">
+        <div class="tech-group">
+          <div class="tech-group-head"><span class="dot-g"></span>هستهٔ اصلی سیستم (سرور)</div>
+          <div class="tech-tags">
+            <span class="tech-tag primary">پاسخ‌دهی سریع حتی زیر بار زیاد</span>
+            <span class="tech-tag">پایگاه داده حرفه‌ای و امن</span>
+            <span class="tech-tag">حافظهٔ سریع برای پاسخ آنی</span>
+            <span class="tech-tag">ورود امن کاربران</span>
+            <span class="tech-tag">جلوگیری از سوءاستفاده و حملات</span>
+            <span class="tech-tag">پیامک به کاربران</span>
+            <span class="tech-tag">اعلان روی گوشی</span>
+            <span class="tech-tag">ذخیرهٔ امن فایل‌ها</span>
+            <span class="tech-tag">پشتیبان‌گیری خودکار</span>
+            <span class="tech-tag">فشرده‌سازی خودکار تصاویر</span>
+            <span class="tech-tag">پایش لحظه‌ای سلامت سیستم</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-head"><span class="dot-g"></span>ظاهر و تجربهٔ کاربری</div>
+          <div class="tech-tags">
+            <span class="tech-tag primary">طراحی مدرن و واکنش‌گرا</span>
+            <span class="tech-tag">نمودار و آمار تصویری</span>
+            <span class="tech-tag">تقویم شمسی</span>
+            <span class="tech-tag">نصب روی گوشی مانند اپلیکیشن</span>
+            <span class="tech-tag">حالت شب</span>
+            <span class="tech-tag">تأیید انسان‌بودن کاربر</span>
+            <span class="tech-tag">بهینه برای موتورهای جستجو</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-head"><span class="dot-g"></span>زیرساخت و نگهداری</div>
+          <div class="tech-tags">
+            <span class="tech-tag primary">به‌روزرسانی خودکار و بدون خطای انسانی</span>
+            <span class="tech-tag primary">اتصال رمزنگاری‌شده و امن</span>
+            <span class="tech-tag">پایش لحظه‌ای و گزارش خودکار خطا</span>
+            <span class="tech-tag">پشتیبان‌گیری خودکار از پایگاه داده</span>
+            <span class="tech-tag">سرور اختصاصی ایمیل</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-head"><span class="dot-g"></span>آمادهٔ توسعه — قابل فعال‌سازی سریع</div>
+          <div class="tech-tags">
+            <span class="tech-tag accent">آزمون مرور آخر هفته</span>
+            <span class="tech-tag accent">آزمون‌های آزمایشی انفرادی</span>
+            <span class="tech-tag accent">ارسال نوتیفیکیشن</span>
+            <span class="tech-tag">درگاه پرداخت</span>
+            <span class="tech-tag">سیستم مدال</span>
+            <span class="tech-tag">بارگذاری فایل در مباحث</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture -->
+    <div class="feat-section">
+      <div class="feat-head">
+        <h3>ساختار فنی پلتفرم</h3>
+        <span class="hint">هر بخش مستقل و هماهنگ با سایر بخش‌ها کار می‌کند</span>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-group-box">
+          <div class="feat-group-title">بخش کاربران</div>
+          <ul class="feat-list">
+            <li>وب‌اپ اصلی با بیش از ۵۰ صفحه</li>
+            <li>قابل نصب روی موبایل</li>
+            <li>طراحی یکپارچه و راست‌چین</li>
+            <li>لایه میانی امن بین مرورگر و سرور</li>
+          </ul>
+        </div>
+        <div class="feat-group-box">
+          <div class="feat-group-title">بخش مدیریت</div>
+          <ul class="feat-list">
+            <li>پنل جداگانه برای مدیران</li>
+            <li>مدیریت سوالات، آزمون‌ها و کاربران</li>
+            <li>مدیریت اشتراک، تخفیف و محتوا</li>
+            <li>تعریف قوانین مدال و اعلان‌ها</li>
+          </ul>
+        </div>
+        <div class="feat-group-box">
+          <div class="feat-group-title">موتور پردازش</div>
+          <ul class="feat-list">
+            <li>۴۱ سرویس مستقل برای کاربران و مدیران</li>
+            <li>دو رابط جدا — کاربران و پنل مدیریت</li>
+            <li>احراز هویت، محدودسازی و ثبت رویداد</li>
+            <li>زمان‌بند خودکار برای پشتیبان و محاسبات</li>
+          </ul>
+        </div>
+        <div class="feat-group-box">
+          <div class="feat-group-title">ذخیره‌سازی و فایل</div>
+          <ul class="feat-list">
+            <li>پایگاه داده اصلی با ساختار سلسله‌مراتبی دروس</li>
+            <li>حافظه موقت برای افزایش سرعت</li>
+            <li>فضای ذخیره فایل و پشتیبان رمزنگاری‌شده</li>
+            <li>بهینه‌سازی خودکار تصاویر</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="platform-note">
+      تیم فنی <b>بیش از ۲.۵ سال</b> بدون وقفه روی این پلتفرم کار کرده است. با <b>بیش از ۳٬۲۰۰ ثبت تغییر در کد</b>، <b>۴۱ سرویس مستقل</b>، الگوریتم <b>FSRS</b> و زیرساخت آماده بهره‌برداری — این پلتفرم <b>آماده استفاده و راه‌اندازی</b> است و می‌تواند همین امروز وارد فاز بهره‌برداری شود.
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ================= CONTENT ================= -->
+<section class="content-section">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mark"><span></span><span></span><span></span><span></span></span>محتوا</div>
+    <h2>پوشش آزمون‌ها و وضعیت محتوا</h2>
+    <p class="lede">هدف بلندمدت پوشش کامل آزمون‌های حقوقی کشور است. با توجه به حجم داوطلبان، برای شروع روی پرتقاضاترین آزمون‌ها تمرکز کرده‌ایم. اگر اولویت‌بندی یا بازهٔ سال‌ها را متفاوت می‌بینید، بفرمایید تا دربارهٔ آن صحبت کنیم.</p>
+
+    <div class="exam-scope">
+      <div class="scope-card">
+        <div class="scope-card-head target">هدف بلندمدت — پوشش کامل</div>
+        <div class="scope-card-body">
+          <p>در افق نهایی، بانک سوالات و پاسخ‌های تشریحی برای همه آزمون‌های زیر آماده می‌شود:</p>
+          <div class="exam-tags">
+            <span class="exam-tag on">مرکز وکلا</span>
+            <span class="exam-tag on">کانون وکلا</span>
+            <span class="exam-tag on">قضاوت</span>
+            <span class="exam-tag on">سردفتری</span>
+            <span class="exam-tag">ارشد — همه گرایش‌ها</span>
+            <span class="exam-tag">دکتری — همه گرایش‌ها</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-card">
+        <div class="scope-card-head priority">اولویت فعلی — فاز اول</div>
+        <div class="scope-card-body">
+          <p>با توجه به تعداد داوطلبان، در فاز اول فقط این چهار آزمون (بدون ارشد و دکتری) تکمیل می‌شوند:</p>
+          <div class="exam-tags">
+            <span class="exam-tag on">مرکز وکلا</span>
+            <span class="exam-tag on">کانون وکلا</span>
+            <span class="exam-tag on">قضاوت</span>
+            <span class="exam-tag on">سردفتری</span>
+          </div>
+          <div class="scope-range">بازه سال‌های آزمون: <b>۱۳۹۲ تا ۱۴۰۵</b></div>
+        </div>
+      </div>
+    </div>
+
+    <span class="sec-label">وضعیت فعلی محتوا</span>
+
+    <div class="content-status">
+      <div class="content-stat">
+        <div class="val">۲۵٪</div>
+        <div class="cap">سوالات آزمون‌ها پاسخ تشریحی دارند</div>
+      </div>
+      <div class="content-stat">
+        <div class="val forest">۲ ماه</div>
+        <div class="cap">زمان تخمینی تکمیل محتوا — در صورت آماده‌سازی توسط تیم داخلی</div>
+      </div>
+    </div>
+
+    <div class="pillar-note">
+      پاسخ‌های موجود، پیش‌تر و در بازهٔ زمانی گذشته تهیه شده‌اند. به‌دلیل گذشت زمان و احتمال <b>تغییرات قوانین</b>، این پاسخ‌ها نیاز به <b>بازبینی و تأیید مجدد</b> دارند — نه استفاده مستقیم بدون بررسی. باقی‌مانده محتوا (۷۵٪) باید از صفر یا بر پایه همین پاسخ‌های بازبینی‌شده تکمیل شود.
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ================= MONTHLY COSTS ================= -->
+<section class="table-section">
+  <div class="wrap">
+    <div class="table-block">
+    <span class="sec-label">هزینه‌های جاری</span>
+    <h2>هزینه‌های ماهانه پروژه</h2>
+    <p class="lede">جمع هزینه‌های ثابت و مستمر ماهانه که برای اداره و رشد پروژه صرف می‌شود. این اقلام برآورد اولیه‌اند؛ اگر مورد یا عددی را متفاوت می‌دانید، خوشحال می‌شویم بشنویم.</p>
+
+    <div class="table-wrap">
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:56px;">ردیف</th>
+            <th>اقلام هزینه</th>
+            <th class="amount-h">مبلغ (تومان)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>۱</td><td>تبلیغات در فضای مجازی</td><td class="amount">۵۶,۰۰۰,۰۰۰</td></tr>
+          <tr><td>۲</td><td>سئو (بهینه‌سازی موتورهای جستجو)</td><td class="amount">۳۰,۰۰۰,۰۰۰</td></tr>
+          <tr><td>۳</td><td>سرور (هزینه سالانه ۹۰,۰۰۰,۰۰۰ ÷ ۱۲ ماه)</td><td class="amount">۷,۵۰۰,۰۰۰</td></tr>
+          <tr><td>۴</td><td>اجاره دفتر (برآورد بازار: ۲۰ تا ۳۰ میلیون — مبنای محاسبه: میانگین ۲۵)</td><td class="amount">۲۵,۰۰۰,۰۰۰</td></tr>
+          <tr><td>۵</td><td>هزینه‌های متفرقه و احتیاطی (پنل پیامک، بک‌آپ، کارت ویزیت، هزینه‌های پیش‌بینی‌نشده و …)</td><td class="amount">۲۰,۰۰۰,۰۰۰</td></tr>
+          <tr class="total"><td colspan="2">جمع هزینه‌های جاری ماهانه</td><td class="amount">۱۳۸,۵۰۰,۰۰۰</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADS BREAKDOWN ================= -->
+<section class="table-section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="table-block">
+    <span class="sec-label" style="color:var(--gold); background:rgba(185,134,58,0.12);">جزئیات تبلیغات</span>
+    <h2 style="font-size:28px;">ترکیب هزینه تبلیغات ماهانه</h2>
+    <p class="lede" style="margin-bottom:28px;">بزرگ‌ترین قلم هزینه جاری، صرف تبلیغات در رسانه‌های تخصصی حقوقی و فضای مجازی می‌شود. اگر ترکیب یا مبلغ رسانه‌ای را متفاوت می‌بینید، با ما در میان بگذارید.</p>
+
+    <div class="table-wrap">
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>رسانه</th>
+            <th>نوع تبلیغ</th>
+            <th class="amount-h">هزینه (تومان)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>اینستاگرام اختبار</td><td>۱ پست</td><td class="amount">۱۵,۰۰۰,۰۰۰</td></tr>
+          <tr><td>اینستاگرام اختبار</td><td>۱ استوری</td><td class="amount">۸,۰۰۰,۰۰۰</td></tr>
+          <tr><td>تلگرام اختبار</td><td>۱ پست + ۱ استوری (مجموعاً)</td><td class="amount">۱۰,۰۰۰,۰۰۰</td></tr>
+          <tr><td>وکلا پرس</td><td>۱ پست</td><td class="amount">۱۰,۰۰۰,۰۰۰</td></tr>
+          <tr><td>وکلا پرس</td><td>۱ استوری</td><td class="amount">۵,۰۰۰,۰۰۰</td></tr>
+          <tr><td>حقوقی تایمز</td><td>۱ پست + ۱ استوری (مجموعاً)</td><td class="amount">۶,۰۰۰,۰۰۰</td></tr>
+          <tr><td>حقوق روز</td><td>۱ پست + ۱ استوری (مجموعاً)</td><td class="amount">۲,۰۰۰,۰۰۰</td></tr>
+          <tr class="total"><td colspan="2">جمع هزینه‌های تبلیغات ماهانه</td><td class="amount">۵۶,۰۰۰,۰۰۰</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ================= OFFICE SETUP ================= -->
+<section class="table-section">
+  <div class="wrap">
+    <div class="table-block">
+    <span class="sec-label">راه‌اندازی دفتر</span>
+    <h2>رهن دفتر — هزینهٔ یک‌بارهٔ راه‌اندازی</h2>
+    <p class="lede">علاوه بر اجارهٔ ماهانه (ردیف ۴ جدول هزینه‌های ماهانه)، راه‌اندازی دفتر کار تیم نیازمند پرداخت رهن است. این مبلغ یک‌بار، در شروع کار پرداخت می‌شود. اگر بازهٔ قیمت یا مبنای محاسبه را متفاوت می‌دانید، بفرمایید.</p>
+
+    <div class="table-wrap">
+    <div class="two-col">
+      <div class="card">
+        <table>
+          <thead>
+            <tr><th>شرح</th><th class="amount-h">مبلغ (تومان)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>رهن دفتر (برآورد بازار: ۱۰۰ تا ۲۵۰ میلیون — مبنای محاسبه: میانگین ۱۷۵)</td><td class="amount">۱۷۵,۰۰۰,۰۰۰</td></tr>
+            <tr class="total"><td>پرداخت یک‌بار در شروع پروژه</td><td class="amount">۱۷۵,۰۰۰,۰۰۰</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quote">
+        <strong style="color:var(--ink);">چرا میانگین؟</strong> — بازه قیمت دفتر در مناطق مختلف تهران متفاوت است. برای شفافیت، بازه واقعی (۱۰۰–۲۵۰ میلیون رهن / ۲۰–۳۰ میلیون اجاره) در گزارش آمده و <b style="color:var(--ink);">میانگین</b> به‌عنوان مبنای محاسبات مالی استفاده شده تا برآورد متعادل و قابل اتکا باشد.
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ANNUAL ROLLUP ================= -->
+<section class="table-section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="table-block">
+    <span class="sec-label">جمع‌بندی هزینه‌های عملیاتی</span>
+    <h2>هزینهٔ عملیاتی دو سال</h2>
+    <p class="lede">با توجه به این‌که سرمایه مورد نیاز باید کفاف دو سال اول فعالیت را بدهد، هزینه‌های جاری ماهانه برای بازهٔ ۲۴ ماهه محاسبه شده است. اگر افق زمانی دیگری مدنظر شماست، می‌توانیم بر همان اساس دوباره محاسبه کنیم.</p>
+
+    <div class="table-wrap">
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:56px;">ردیف</th>
+            <th>شرح</th>
+            <th class="amount-h">مبلغ (تومان)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>۱</td><td>هزینه‌های جاری سال اول (۱۳۸,۵۰۰,۰۰۰ × ۱۲)</td><td class="amount">۱,۶۶۲,۰۰۰,۰۰۰</td></tr>
+          <tr><td>۲</td><td>هزینه‌های جاری سال دوم (۱۳۸,۵۰۰,۰۰۰ × ۱۲) - بدون تورم</td><td class="amount">۱,۶۶۲,۰۰۰,۰۰۰</td></tr>
+          <tr class="total"><td colspan="2">جمع کل هزینه‌های عملیاتی دو سال (۲۴ ماه)</td><td class="amount">۳,۳۲۴,۰۰۰,۰۰۰</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ================= REVENUE ESTIMATE ================= -->
+<section class="content-section">
+  <div class="wrap">
+    <span class="sec-label">برآورد بازار و درآمد</span>
+    <h2>برآورد نرخ تبدیل و درآمد سال اول و دوم</h2>
+    <p class="lede">جامعه هدف پروژه حدود <b>۱۲۰ هزار داوطلب</b> آزمون‌های وکالت، قضاوت و سردفتری است. برای برآورد تعداد خریداران، به‌جای عدد دلخواه، از میانگین‌های منتشرشدهٔ صنعت برای مدل «فریمیوم» (استفادهٔ رایگان همراه با ارتقا به اشتراک پولی) در حوزهٔ آموزش آنلاین استفاده شده است. اگر فرض‌های این برآورد را متفاوت می‌بینید، خوشحال می‌شویم دربارهٔ آن گفت‌وگو کنیم.</p>
+
+    <div class="exam-scope">
+      <div class="scope-card">
+        <div class="scope-card-head priority">سال اول</div>
+        <div class="scope-card-body">
+          <p>بر مبنای نرخ تبدیل فریمیوم حوزهٔ آموزش آنلاین (به‌طور میانگین <b>۲.۶٪ تا ۴٪</b> از کاربران رایگان):</p>
+          <div class="content-status" style="grid-template-columns:1fr; margin-bottom:14px;">
+            <div class="content-stat">
+              <div class="val forest">۳,۰۰۰ تا ۴,۸۰۰ نفر</div>
+              <div class="cap">برآورد تعداد خریداران اشتراک در سال اول</div>
+            </div>
+          </div>
+          <div class="scope-range">با فرض خرید حداقلی <b>۵۰۰ هزار تومان</b> به ازای هر خریدار در سال اول: درآمد برآوردی <b>۱.۵ تا ۲.۴ میلیارد تومان</b></div>
+        </div>
+      </div>
+
+      <div class="scope-card">
+        <div class="scope-card-head target">سال دوم (تجمعی)</div>
+        <div class="scope-card-body">
+          <p>در مدل فریمیوم، خرید به مرور و در طول زمان اتفاق می‌افتد؛ با تکرار سالانهٔ آزمون‌ها و بازگشت داوطلبان قبلی، نرخ تجمعی معمولاً افزایش می‌یابد:</p>
+          <div class="content-status" style="grid-template-columns:1fr; margin-bottom:14px;">
+            <div class="content-stat">
+              <div class="val">۶,۰۰۰ تا ۸,۴۰۰ نفر</div>
+              <div class="cap">برآورد تجمعی تعداد خریداران تا پایان سال دوم</div>
+            </div>
+          </div>
+          <div class="scope-range">با فرض خرید حداقلی <b>۱ میلیون تومان</b> به ازای هر خریدار تا این مقطع: درآمد تجمعی برآوردی <b>۶ تا ۸.۴ میلیارد تومان</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-note">
+      <b>مبنای برآورد:</b> اعداد سال اول بر اساس میانگین نرخ تبدیل مدل فریمیوم در آموزش آنلاین (حدود ۲.۶٪ تا ۴٪) است. اعداد سال دوم با فرض افزایش تدریجی خریداران محاسبه شده است. این‌ها تخمین هستند، نه عدد قطعی.
+      <div style="margin-top:12px; font-size:13px;">منابع: <a href="https://userpilot.com/blog/freemium-to-premium/" target="_blank" rel="noopener" style="color:var(--forest);">گزارش First Page Sage دربارهٔ نرخ تبدیل فریمیوم</a> — <a href="https://kissmetrics.io/glossary/free-to-paid-conversion" target="_blank" rel="noopener" style="color:var(--forest);">KISSmetrics، نرخ تبدیل رایگان به پولی</a></div>
+    </div>
+
+    <div class="quote" style="margin-top:20px;">
+      <strong style="color:var(--ink);">مهم:</strong> مبلغ ۵۰۰ هزار تومان (سال اول) و ۱ میلیون تومان (سال دوم) برای هر خریدار، <b>فرضی و صرفاً برای نمونه‌سازی محاسبه</b> است و رقم واقعی نیست. قیمت نهایی اشتراک هنوز تعیین نشده و پس از تعیین، به‌ویژه با توجه به پلن‌های چندماهه، می‌تواند به‌مراتب بیشتر از این مبلغ فرضی باشد — که در آن صورت، درآمد واقعی نیز بیشتر از اعداد بالا خواهد بود.
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ================= FINAL SUMMARY ================= -->
+<section class="final table-section">
+  <div class="wrap">
+    <div class="table-block">
+    <span class="sec-label">جمع‌بندی نهایی</span>
+    <h2>سرمایهٔ مورد نیاز پروژه</h2>
+    <p class="lede">با جمع هزینه‌های عملیاتی دو سال اول و هزینهٔ یک‌بارهٔ راه‌اندازی دفتر، سرمایهٔ مورد نیاز پروژه به شرح زیر است. اگر بخشی از این محاسبات را متفاوت می‌بینید یا سؤالی دارید، با کمال میل دربارهٔ آن صحبت می‌کنیم.</p>
+
+    <div class="table-wrap">
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:56px;">ردیف</th>
+            <th>شرح</th>
+            <th class="amount-h">مبلغ (تومان)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>۱</td><td>هزینه‌های عملیاتی دو سال (۲۴ ماه)</td><td class="amount">۳,۳۲۴,۰۰۰,۰۰۰</td></tr>
+          <tr><td>۲</td><td>رهن دفتر (هزینهٔ یک‌بارهٔ راه‌اندازی)</td><td class="amount">۱۷۵,۰۰۰,۰۰۰</td></tr>
+          <tr class="total"><td colspan="2">جمع کل سرمایهٔ مورد نیاز</td><td class="amount">۳,۴۹۹,۰۰۰,۰۰۰</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="summary-note" style="margin-top:24px;">
+      <b>یادمان باشد:</b> این برآورد بر اساس هزینه‌های جاری امروز محاسبه شده است. ممکن است در طول زمان، به‌ویژه به‌دلیل تورم، هزینه‌های ماهانه تا حدی بیشتر شوند.
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="mark"><span></span><span></span><span></span><span></span></span>
+  <p>کلیه مبالغ این گزارش به تومان و بر اساس برآوردهای فعلی پروژه تنظیم شده است. این سند جهت ارائه به سرمایه‌گذار تهیه گردیده و ماهیت محرمانه دارد.</p>
+  <p style="margin-top:8px; font-size:11px; color:var(--ink-faint);">تاریخ تهیه: ۲۸ مرداد ۱۴۰۵</p>
+</footer>
+
+</body>
+</html>
